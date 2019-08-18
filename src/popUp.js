@@ -31,31 +31,39 @@ const PopUp = (props) => {
                         <form>
                             <div class="border-bottom ">
                                 <label class="set-opacity mb-0">Product Title</label>
-                                <input type="text" class="border-0 custom-input"
-                                    value={product.productTitle} />
+                                <input type="text" name="productTitle" class="border-0 custom-input"
+                                    value={product.productTitle} onChange={(e) => props.handleChange(e)} />
                             </div>
                             <div class="border-bottom mt-2">
                                 <label class="set-opacity mb-0">Price</label><br />
-                                <input type="text" class="border-0 custom-input"
-                                    value={product.price} />
+                                <input type="text" class="border-0 custom-input" name="price"
+                                    value={product.price} onChange={(e) => props.handleChange(e)} />
                             </div>
                             <div class="border-bottom mt-2">
                                 <label class="set-opacity mb-0">Offer Price</label>
-                                <input type="text" class="border-0 custom-input"
-                                    placeholder="Enter Offer Price" />
+                                <input type="text" class="border-0 custom-input" name="offerPrice"
+                                    placeholder="Enter Offer Price"
+                                    value={product.offerPrice}
+                                    onChange={(e) => props.handleChange(e)} />
                             </div>
                             <div class="border-bottom mt-2">
                                 <label class="set-opacity mb-0">Shipping Cost</label>
-                                <input type="number" class="border-0 custom-input" value="0" />
+                                <input type="number" class="border-0 custom-input" name="shippingCost"
+                                    value={product.shippingCost}
+                                    onChange={(e) => props.handleChange(e)} />
                             </div>
                             <div class="border-bottom mt-2">
                                 <label class="set-opacity mb-0">Inventory</label>
-                                <input type="number" class="border-0 custom-input" value="0" />
+                                <input type="number" class="border-0 custom-input" name="inventory"
+                                    value={product.inventory}
+                                    onChange={(e) => props.handleChange(e)} />
                             </div>
                             <div class="border-bottom mt-2">
                                 <label class="set-opacity mb-0">Description</label>
                                 <input type="text" class="border-0 custom-input"
-                                    placeholder="Enter Description for Profuct" />
+                                    placeholder="Enter Description for Profuct" name="description"
+                                    value={product.description}
+                                    onChange={(e) => props.handleChange(e)} />
                             </div>
 
                         </form>

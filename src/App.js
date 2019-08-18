@@ -16,6 +16,11 @@ class App extends React.Component {
   closePopup = () => {
     this.setState({ showPopUp: false });
   }
+  handleChange = (e) => {
+    this.setState({
+      currentProduct: { ...this.state.currentProduct, [e.target.name]: e.target.value }
+    })
+  }
 
 
   render() {
@@ -103,7 +108,7 @@ class App extends React.Component {
                 {
                   productList.map((product, i) => {
                     return (
-                      <div class="col-md-4" key={i}>
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" key={i}>
                         <div class="product" onClick={(e) => this.showPopUp(product)}
                         >
                           <img src={product.src} alt="" />
@@ -115,7 +120,7 @@ class App extends React.Component {
                             this.state.showPopUp && product.id === this.state.currentProduct.id ?
                               <PopUp
                                 product={this.state.currentProduct}
-                              //useOutsideAlerter={this.useOutsideAlerter}
+                                handleChange={this.handleChange}
                               />
                               : ''
                           }
