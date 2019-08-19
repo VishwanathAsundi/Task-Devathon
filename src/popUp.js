@@ -14,10 +14,8 @@ function useOutsideAlerter(ref) {
         };
     });
 }
-
 const PopUp = (props) => {
     const { product } = props;
-    console.log(product);
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef);
     return (

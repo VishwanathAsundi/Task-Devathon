@@ -1,17 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import PopUp from './popUp';
 
-
-
 class App extends React.Component {
-  state = {
-    currentProduct: {},
-    showPopUp: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentProduct: {},
+      showPopUp: false,
+    }
   }
-  showPopUp = (product) => {
-    this.setState({ currentProduct: product, showPopUp: true });
+  showPopUp = (product, indexOfCurrentProduct) => {
+    this.setState({ currentProduct: product, showPopUp: true, index: indexOfCurrentProduct });
   }
   closePopup = () => {
     this.setState({ showPopUp: false });
@@ -21,72 +21,111 @@ class App extends React.Component {
       currentProduct: { ...this.state.currentProduct, [e.target.name]: e.target.value }
     })
   }
-
-
   render() {
     const productList = [
       {
         src: "assets/images/emma3.jpg",
         productTitle: "scarps",
         price: "500 $",
-        id: 1
+        id: 1,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma4.jpg",
         productTitle: "Hat",
         price: "700 $",
-        id: 2
+        id: 2,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma5.jpg",
         productTitle: "Sweater",
         price: "900 $",
-        id: 3
+        id: 3,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma6.jpg",
         productTitle: "Casuals",
         price: "100 $",
-        id: 4
+        id: 4,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma2.jpg",
         productTitle: "Modern",
         price: "300 $",
-        id: 5
+        id: 5,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma1.jpg",
         productTitle: "scarps",
         price: "150 $",
-        id: 6
+        id: 6,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma3.jpg",
         productTitle: "scarps",
         price: "500 $",
-        id: 7
+        id: 7,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma4.jpg",
         productTitle: "scarps",
         price: "700 $",
-        id: 8
+        id: 8,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma5.jpg",
         productTitle: "scarps",
         price: "900 $",
-        id: 9
+        id: 9,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
       {
         src: "assets/images/emma6.jpg",
         productTitle: "scarps",
         price: "100 $",
-        id: 10
+        id: 10,
+        offerPrice: 100,
+        shippingCost: 10,
+        inventory: 5,
+        description: "Awesome product"
       },
 
     ]
+
     return (
       <div class="container-fluid">
         <div class="row">
@@ -109,7 +148,7 @@ class App extends React.Component {
                   productList.map((product, i) => {
                     return (
                       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" key={i}>
-                        <div class="product" onClick={(e) => this.showPopUp(product)}
+                        <div class="product" onClick={(e) => this.showPopUp(product, i)}
                         >
                           <img src={product.src} alt="" />
                           <div class="product-descr">
@@ -121,6 +160,7 @@ class App extends React.Component {
                               <PopUp
                                 product={this.state.currentProduct}
                                 handleChange={this.handleChange}
+                                updateProduct={this.updateProduct}
                               />
                               : ''
                           }
@@ -129,8 +169,6 @@ class App extends React.Component {
                     )
                   })
                 }
-
-
               </div>
             </section>
           </div>
